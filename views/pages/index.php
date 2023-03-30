@@ -11,3 +11,32 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-md-8">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static" style="height: 250px !important;">
+                    <strong class="d-inline-block mb-2 text-primary">Animals</strong>
+                    <h3 class="mb-0">Looking to adopt?</h3>
+                    <p class="card-text mb-auto">Find your new furry friend at our animal shelter! Click here to view our adoptable dogs, cats, and other pets waiting for their forever homes.</p>
+                    <a href="<?= ROOT_PATH ?>/resources" class="card-link ms-auto">See More &raquo;</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img src="assets\thomas-park-On6bRQRn5lY-unsplash.jpg" width="350" height="250" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static" style="height: 250px !important;">
+                    <strong class="d-inline-block mb-2 text-primary">Contact</strong>
+                    <h3 class="mb-0">Make an appointment</h3>
+                    <p class="mb-auto">Please don't hesitate to get in touch with us. We are always happy to answer any questions you may have and help you find your new best fur-riend.</p>
+                    <a href="#" class="card-link ms-auto">Go &raquo;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
