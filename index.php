@@ -10,7 +10,7 @@
 
     // Create a connection helper
     function get_connection () {
-        return connect("localhost", "comp_1006_your_student_id", "root", "password", 3308);
+        return connect("localhost", "comp_1006_200368110_200527317", "root", "password", 3308);
     };
 
     // Provide a root path helper
