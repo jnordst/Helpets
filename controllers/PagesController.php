@@ -6,4 +6,14 @@
         ]);
     }
 
+    function about () {
+        render("pages/about", [
+            "title" => "The Resource Application"
+        ]);
+    }
+
+
+
+
+
 ?>
