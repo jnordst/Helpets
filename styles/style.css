@@ -1,0 +1,8 @@
+.nav-item {
+    font-size: 1.22rem;
+}
+
+.navbar .container-fluid {
+    width:85% !important;
+    margin:0px auto;
+}

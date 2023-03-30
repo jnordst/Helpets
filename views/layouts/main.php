@@ -1,6 +1,6 @@
 <?php
-    if (session_status() === PHP_SESSION_NONE) session_start();
-    $auth = isset($_SESSION["user"]);
+if (session_status() === PHP_SESSION_NONE) session_start();
+$auth = isset($_SESSION["user"]);
 ?>
 
 <!DOCTYPE html>
@@ -18,36 +18,37 @@
 
 <body id="<?= $override_id ?? "main" ?>">
     <!-- Simple notification check for errors -->
-    <?php if (isset($errors)): ?>
+    <?php if (isset($errors)) : ?>
         <div class="alert alert-danger">
             <?php
-                if (is_string($errors)) {
-                    echo "<p>$errors</p>";
-                } else {
-                    foreach ($errors as $error) echo "<p>$error</p>";
-                }
+            if (is_string($errors)) {
+                echo "<p>$errors</p>";
+            } else {
+                foreach ($errors as $error) echo "<p>$error</p>";
+            }
             ?>
         </div>
     <?php endif ?>
 
     <!-- Simple notification check for successes -->
-    <?php if (isset($success)): ?>
+    <?php if (isset($success)) : ?>
         <div class="alert alert-success">
             <?php
-                if (is_string($success)) {
-                    echo "<p>$success</p>";
-                } else {
-                    foreach ($success as $s) echo "<p>$s</p>";
-                }
+            if (is_string($success)) {
+                echo "<p>$success</p>";
+            } else {
+                foreach ($success as $s) echo "<p>$s</p>";
+            }
             ?>
         </div>
     <?php endif ?>
 
     <!-- Global navigation -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?= ROOT_PATH ?>">
-                The Resource Application
+                <img src="assets\paw-filled.png" alt="" width="30" class="d-inline-block align-text-top">
+                helpets
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,11 +56,15 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <?php if ($auth): ?>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <?php if ($auth) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ROOT_PATH ?>">Home</a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Resources
+                                Animals
                             </a>
 
                             <ul class="dropdown-menu">
@@ -69,9 +74,17 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="<?= ROOT_PATH ?>">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= ROOT_PATH ?>">Contact</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a onclick="return confirm('Are you sure you are ready to log out?')" class="nav-link" href="<?= ROOT_PATH ?>/logout">Logout</a>
                         </li>
-                    <?php else: ?>
+                    <?php else : ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ROOT_PATH ?>/users/new">Register</a>
                         </li>
