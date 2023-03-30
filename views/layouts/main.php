@@ -28,6 +28,7 @@ $auth = isset($_SESSION["user"]);
             }
             ?>
         </div>
+
     <?php endif ?>
 
     <!-- Simple notification check for successes -->
