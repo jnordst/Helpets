@@ -15,7 +15,7 @@
                 "action" => "index"
             ],
             [
-                // route for the about page
+                // Route for the about page
                 "pattern" => "/about",
                 "controller" => "PagesController",
                 "action" => "about"

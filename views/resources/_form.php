@@ -5,5 +5,22 @@
 ?>
 
 <form action="<?= ROOT_PATH ?>/resources/<?= $action ?>" method="post">
+<?php if ($action === "update"): ?>
+        <input type="hidden" name="id" value="<?= $form_fields["id"] ?>">
+    <?php endif ?>
+
+    <div class="form-group my-3">
+        <label for="animal_name">Animal Name</label>
+        <input class="form-control" type="text" name="animal_name" value="<?= $form_fields["animal_name"] ?? "" ?>">
+    </div>
+
+    <div class="form-group my-3">
+        <label for="animal_age">Age</label>
+        <input class="form-control" type="text" name="animal_age" value="<?= $form_fields["animal_age"] ?? "" ?>">
+    </div>
+
+    <div>
+        <button class="btn btn-primary">Submit</button>
+    </div>
     
 </form>
