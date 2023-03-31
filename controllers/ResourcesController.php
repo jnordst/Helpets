@@ -28,7 +28,6 @@
             "title" => "New",
             "action" => "create",
             "breeds" => ($breeds ?? [])
-
         ]);
     }
 
@@ -42,9 +41,13 @@
             return redirect("", ["errors" => "Animal does not exist"]);
         }
 
+        $breeds = BreedModel::findAll();
+
+
         render("resources/edit", [
             "title" => "Edit Animal",
             "animal" => $animal,
+            "breeds" => ($breeds ?? []),
             "edit_mode" => true,
             "action" => "update"
         ]);
