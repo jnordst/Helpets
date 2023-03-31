@@ -28,6 +28,7 @@ $auth = isset($_SESSION["user"]);
             }
             ?>
         </div>
+
     <?php endif ?>
 
     <!-- Simple notification check for successes -->
@@ -69,12 +70,12 @@ $auth = isset($_SESSION["user"]);
 
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/new">New</a></li>
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources">List</a></li>
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/show">List</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= ROOT_PATH ?>">About</a>
+                            <a class="nav-link" href="<?= ROOT_PATH ?>/about">About</a>
                         </li>
 
                         <li class="nav-item">
@@ -102,13 +103,13 @@ $auth = isset($_SESSION["user"]);
     <?= $yield ?? null ?>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017-2023 Helpets</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
+        <p class="mb-1">&copy; 2017-2023 Helpets</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
 </body>
 
 </html>

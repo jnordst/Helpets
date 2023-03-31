@@ -1,15 +1,26 @@
 <?php
 
     require_once("./models/ResourceModel.php");
+    require_once("./models/BreedModel.php");
 
     function index () {
+        $animals = ResourceModel::findAll();
+        $breeds = BreedModel::findAll();
+
         render("resources/index", [
-            "title" => "Index"
+            "animals" => $animals,
+            "breeds" => $breeds,
+            "title" => "Animals"
         ]);
     }
 
     function show () {
+        $animals = ResourceModel::findAll();
+        $breeds = BreedModel::findAll();
+        
         render("resources/show", [
+            "animals" => $animals,
+            "breeds" => $breeds,
             "title" => "Show"
         ]);
     }

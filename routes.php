@@ -15,6 +15,12 @@
                 "action" => "index"
             ],
             [
+                // route for the about page
+                "pattern" => "/about",
+                "controller" => "PagesController",
+                "action" => "about"
+            ],
+            [
                 "pattern" => "/resources",
                 "controller" => "ResourcesController",
                 "action" => "index"
@@ -54,6 +60,7 @@
                 "controller" => "UsersController",
                 "action" => "logout"
             ],
+           
         ],
         "post" => [
             [
