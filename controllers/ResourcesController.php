@@ -22,9 +22,13 @@
     }
 
     function _new () {
+        $breeds = BreedModel::findAll();
+
         render("resources/new", [
             "title" => "New",
-            "action" => "create"
+            "action" => "create",
+            "breeds" => ($breeds ?? [])
+
         ]);
     }
 

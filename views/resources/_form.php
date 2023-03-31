@@ -20,8 +20,19 @@
     </div>
 
     <div class="form-group my-3">
-        <label for="breed_id">Breed Id</label>
-        <input class="form-control" type="number" name="breed_id" value="<?= $form_fields["breed_id"] ?? "" ?>">
+        <label for="breed_id">Breed Name</label>
+        <select class="form-select" name="breed_id">
+            <option value="" selected>Choose a Breed...</option>
+            <?php foreach ($breeds as $breed): ?>
+                <?php
+                    $selected = (isset($form_fields["breed_id"]) && $form_fields["breed_id"] == $breed->breed_id) ? "selected" : "";
+                ?>
+
+                <option value="<?= $breed->breed_id ?>" <?= $selected ?>>
+                    <?= $breed->breed_name ?>
+                </option>
+            <?php endforeach ?>
+        </select>
     </div>
 
     <div>
