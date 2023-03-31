@@ -33,18 +33,18 @@
     }
 
     function edit ($request) {
-        if (!isset($request["params"]["animal_id"])) {
+        if (!isset($request["params"]["id"])) {
             return redirect("", ["errors" => "Missing required ID parameter"]);
         }
-
-        $animals = ResourceModel::find($request["params"]["animal_id"]);
-        if (!$animals) {
+        
+        $animal = ResourceModel::find($request["params"]["id"]);
+        if (!$animal) {
             return redirect("", ["errors" => "Animal does not exist"]);
         }
 
         render("resources/edit", [
             "title" => "Edit Animal",
-            "animal" => $animals,
+            "animal" => $animal,
             "edit_mode" => true,
             "action" => "update"
         ]);
