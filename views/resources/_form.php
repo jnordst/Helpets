@@ -20,7 +20,7 @@
     </div>
 
     <div class="form-group my-3">
-        <label for="animal_age">Breed Id</label>
+        <label for="breed_id">Breed Id</label>
         <input class="form-control" type="number" name="breed_id" value="<?= $form_fields["breed_id"] ?? "" ?>">
     </div>
 
