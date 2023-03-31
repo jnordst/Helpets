@@ -18,6 +18,7 @@
                 <?php foreach ($breeds as $breed): ?>
                     <tr>
                         <td><?=$breed->animal_name?></td>
+                        <td><?=$breed->breed_name?></td>
                         <td><?=$breed->animal_age?></td>
                         <td>
                             <a class="btn btn-success" href="<?= ROOT_PATH ?>/resources/delete/" onclick="return confirm('Are you sure you want to adopt this animal?')">Adopt</a>

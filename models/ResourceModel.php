@@ -48,8 +48,8 @@
             )";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":breed_id", $package["breed_id"], PDO::PARAM_STR);
-            $stmt->bindParam(":animal_name", $package["animal_name"], PDO::PARAM_INT);
+            $stmt->bindParam(":breed_id", $package["breed_id"], PDO::PARAM_INT);
+            $stmt->bindParam(":animal_name", $package["animal_name"], PDO::PARAM_STR);
             $stmt->bindParam(":animal_age", $package["animal_age"], PDO::PARAM_INT);
 
             $stmt->execute();

@@ -16,7 +16,12 @@
 
     <div class="form-group my-3">
         <label for="animal_age">Age</label>
-        <input class="form-control" type="text" name="animal_age" value="<?= $form_fields["animal_age"] ?? "" ?>">
+        <input class="form-control" type="number" name="animal_age" value="<?= $form_fields["animal_age"] ?? "" ?>">
+    </div>
+
+    <div class="form-group my-3">
+        <label for="animal_age">Breed Id</label>
+        <input class="form-control" type="number" name="breed_id" value="<?= $form_fields["breed_id"] ?? "" ?>">
     </div>
 
     <div>
