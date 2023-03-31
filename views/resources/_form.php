@@ -6,7 +6,7 @@
 
 <form action="<?= ROOT_PATH ?>/resources/<?= $action ?>" method="post">
 <?php if ($action === "update"): ?>
-        <input type="hidden" name="id" value="<?= $form_fields["id"] ?>">
+        <input type="hidden" name="animal_id" value="<?= $form_fields["animal_id"] ?>">
     <?php endif ?>
 
     <div class="form-group my-3">

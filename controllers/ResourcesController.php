@@ -33,8 +33,19 @@
     }
 
     function edit ($request) {
+        if (!isset($request["params"]["animal_id"])) {
+            return redirect("", ["errors" => "Missing required ID parameter"]);
+        }
+
+        $animals = ResourceModel::find($request["params"]["animal_id"]);
+        if (!$animals) {
+            return redirect("", ["errors" => "Animal does not exist"]);
+        }
+
         render("resources/edit", [
-            "title" => "Edit",
+            "title" => "Edit Animal",
+            "animal" => $animals,
+            "edit_mode" => true,
             "action" => "update"
         ]);
     }
@@ -51,12 +62,25 @@
 
     
 
-    function update () {}
+    function update () {
+
+        if (!isset($_POST['animal_id'])) {
+            return redirect("animals", ["errors" => "Missing required ID parameter"]);
+        }
+
+        // Validate field requirements
+        validate($_POST, "resources/edit/{$_POST['animal_id']}");
+
+        // Write to database if good
+        ResourceModel::update($_POST);
+        redirect("", ["success" => "animal was updated successfully"]);
+    }
+    
 
     function delete ($request) {}
 
     function validate ($package, $error_redirect_path) {
-        $fields = ["animal_name", "animal_age"];
+        $fields = ["animal_name", "animal_age", "breed_id"];
         $errors = [];
 
         // No empty fields
