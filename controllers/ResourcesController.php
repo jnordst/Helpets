@@ -5,22 +5,18 @@
 
     function index () {
         $animals = ResourceModel::findAll();
-        $breeds = BreedModel::findAll();
 
         render("resources/index", [
             "animals" => $animals,
-            "breeds" => $breeds,
             "title" => "Animals"
         ]);
     }
 
     function show () {
         $animals = ResourceModel::findAll();
-        $breeds = BreedModel::findAll();
         
         render("resources/show", [
             "animals" => $animals,
-            "breeds" => $breeds,
             "title" => "Show"
         ]);
     }

@@ -8,7 +8,10 @@
         {
             $table = self::$_table;
             $conn = get_connection();
-            $sql = "SELECT * FROM {$table}";
+            $sql = "SELECT * 
+            FROM {$table}
+            JOIN breeds
+            ON animals.breed_id = breeds.breed_id";
 
             $animals = $conn->query($sql)->fetchAll(PDO::FETCH_OBJ);
             $conn = null;
@@ -18,10 +21,13 @@
         public static function find($id) {
             $table = self::$_table;
             $conn = get_connection();
-            $sql = "SELECT * FROM {$table} WHERE animal_id = :animal_id";
+            $sql = "SELECT * FROM {$table}
+            JOIN breeds
+            ON animals.breed_id = breeds.breed_id
+            WHERE animal_id = :id";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":animal_id", $id, PDO::PARAM_INT);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
 
             $animals = $stmt->fetch(PDO::FETCH_OBJ);

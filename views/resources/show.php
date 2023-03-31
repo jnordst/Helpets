@@ -15,14 +15,14 @@
             </thead>
 
             <tbody>
-                <?php foreach ($breeds as $breed): ?>
+                <?php foreach ($animals as $animal): ?>
                     <tr>
-                        <td><?=$breed->animal_name?></td>
-                        <td><?=$breed->breed_name?></td>
-                        <td><?=$breed->animal_age?></td>
+                        <td><?=$animal->animal_name?></td>
+                        <td><?=$animal->breed_name?></td>
+                        <td><?=$animal->animal_age?></td>
                         <td>
-                            <a class="btn btn-success" href="<?= ROOT_PATH ?>/resources/delete/<?= $breed->animal_id ?>" onclick="return confirm('Are you sure you want to adopt this animal?')">Adopt</a>
-                            <a class="btn btn-outline-secondary" href="<?= ROOT_PATH ?>/resources/edit/<?= $breed->animal_id ?>">Edit</a>
+                            <a class="btn btn-success" href="<?= ROOT_PATH ?>/resources/delete/<?= $animal->animal_id ?>" onclick="return confirm('Are you sure you want to adopt this animal?')">Adopt</a>
+                            <a class="btn btn-outline-secondary" href="<?= ROOT_PATH ?>/resources/edit/<?= $animal->animal_id ?>">Edit</a>
                         </td>
                     </tr>
                 <?php endforeach ?>
