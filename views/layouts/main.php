@@ -70,7 +70,7 @@ $auth = isset($_SESSION["user"]);
 
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/new">New</a></li>
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources">List</a></li>
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/show">List</a></li>
                             </ul>
                         </li>
 

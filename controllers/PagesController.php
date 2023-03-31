@@ -2,13 +2,13 @@
 
     function index () {
         render("pages/index", [
-            "title" => "The Resource Application"
+            "title" => "Helpets"
         ]);
     }
 
     function about () {
         render("pages/about", [
-            "title" => "The Resource Application"
+            "title" => "About"
         ]);
     }
 
