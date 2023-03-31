@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Animals</h1>
+    <h1>Available Animals</h1>
 </div>
 
 <div class="container">
