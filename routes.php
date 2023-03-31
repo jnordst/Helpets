@@ -21,6 +21,14 @@
                 "action" => "about"
             ],
             [
+                // Route for the about page
+                "pattern" => "/contact",
+                "controller" => "PagesController",
+                "action" => "contact"
+            ],
+
+            
+            [
                 "pattern" => "/resources",
                 "controller" => "ResourcesController",
                 "action" => "index"

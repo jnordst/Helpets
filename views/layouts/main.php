@@ -79,7 +79,7 @@ $auth = isset($_SESSION["user"]);
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= ROOT_PATH ?>">Contact</a>
+                            <a class="nav-link" href="<?= ROOT_PATH ?>/contact">Contact</a>
                         </li>
 
                         <li class="nav-item">
