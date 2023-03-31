@@ -31,17 +31,17 @@
                 "action" => "_new"
             ],
             [
-                "pattern" => "/resources/:id",
+                "pattern" => "/resources/:animal_id",
                 "controller" => "ResourcesController",
                 "action" => "show"
             ],
             [
-                "pattern" => "/resources/edit/:id",
+                "pattern" => "/resources/edit/:animal_id",
                 "controller" => "ResourcesController",
                 "action" => "edit"
             ],
             [
-                "pattern" => "/resources/delete/:id",
+                "pattern" => "/resources/delete/:animal_id",
                 "controller" => "ResourcesController",
                 "action" => "delete"
             ],

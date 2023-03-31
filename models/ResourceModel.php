@@ -82,7 +82,18 @@
 
         }
 
-        public static function delete($id) {}
+        public static function delete($id) {
+
+            $table = self::$_table;
+            $conn = get_connection();
+            $sql = "DELETE FROM {$table} WHERE animal_id = :animal_id";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":animal_id", $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+            $conn = null;
+        }
 
     }
 

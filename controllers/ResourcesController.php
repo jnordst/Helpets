@@ -29,11 +29,11 @@
     }
 
     function edit ($request) {
-        if (!isset($request["params"]["id"])) {
+        if (!isset($request["params"]["animal_id"])) {
             return redirect("", ["errors" => "Missing required ID parameter"]);
         }
         
-        $animal = ResourceModel::find($request["params"]["id"]);
+        $animal = ResourceModel::find($request["params"]["animal_id"]);
         if (!$animal) {
             return redirect("", ["errors" => "Animal does not exist"]);
         }
@@ -73,7 +73,16 @@
     }
     
 
-    function delete ($request) {}
+    function delete ($request) {
+
+        if (!isset($request["params"]["animal_id"])) {
+            return redirect("animals", ["errors" => "Missing required ID parameter"]);
+        }
+
+        ResourceModel::delete($request["params"]["animal_id"]);
+
+        redirect("", ["success" => "Animal was adopted successfully!"]);
+    }
 
     function validate ($package, $error_redirect_path) {
         $fields = ["animal_name", "animal_age", "breed_id"];
