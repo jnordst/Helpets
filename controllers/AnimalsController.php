@@ -1,21 +1,21 @@
 <?php
 
-    require_once("./models/ResourceModel.php");
+    require_once("./models/AnimalModel.php");
     require_once("./models/BreedModel.php");
 
     function index () {
-        $animals = ResourceModel::findAll();
+        $animals = AnimalModel::findAll();
 
-        render("resources/index", [
+        render("animals/index", [
             "animals" => $animals,
             "title" => "Animals"
         ]);
     }
 
     function show () {
-        $animals = ResourceModel::findAll();
+        $animals = AnimalModel::findAll();
         
-        render("resources/show", [
+        render("animals/show", [
             "animals" => $animals,
             "title" => "Show"
         ]);
@@ -24,7 +24,7 @@
     function _new () {
         $breeds = BreedModel::findAll();
 
-        render("resources/new", [
+        render("animals/new", [
             "title" => "New",
             "action" => "create",
             "breeds" => ($breeds ?? [])
@@ -36,7 +36,7 @@
             return redirect("", ["errors" => "Missing required ID parameter"]);
         }
         
-        $animal = ResourceModel::find($request["params"]["animal_id"]);
+        $animal = AnimalModel::find($request["params"]["animal_id"]);
         if (!$animal) {
             return redirect("", ["errors" => "Animal does not exist"]);
         }
@@ -44,7 +44,7 @@
         $breeds = BreedModel::findAll();
 
 
-        render("resources/edit", [
+        render("animals/edit", [
             "title" => "Edit Animal",
             "animal" => $animal,
             "breeds" => ($breeds ?? []),
@@ -55,12 +55,12 @@
 
     function create () {
              // Validate field requirements
-             validate($_POST, "resources/new");
+             validate($_POST, "animals/new");
 
              // Write to database if good
-             ResourceModel::create($_POST);
+             AnimalModel::create($_POST);
      
-             redirect("resources", ["success" => "Animal was added successfully"]);
+             redirect("animals/show", ["success" => "Animal was added successfully"]);
          }
 
     
@@ -72,11 +72,11 @@
         }
 
         // Validate field requirements
-        validate($_POST, "resources/edit/{$_POST['animal_id']}");
+        validate($_POST, "animals/edit/{$_POST['animal_id']}");
 
         // Write to database if good
-        ResourceModel::update($_POST);
-        redirect("", ["success" => "animal was updated successfully"]);
+        AnimalModel::update($_POST);
+        redirect("", ["success" => "Animal was updated successfully"]);
     }
     
 
@@ -86,7 +86,7 @@
             return redirect("animals", ["errors" => "Missing required ID parameter"]);
         }
 
-        ResourceModel::delete($request["params"]["animal_id"]);
+        AnimalModel::delete($request["params"]["animal_id"]);
 
         redirect("", ["success" => "Animal was adopted successfully!"]);
     }

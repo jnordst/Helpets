@@ -3,7 +3,7 @@
         <div class="container col-md-6 p-lg-5 mx-auto my-5">
             <h1 class="display-3">Helpets</h1>
             <p class="lead font-weight-normal">Help us help furry friends find the loving homes they deserve. Check out our animals or schedule a time to come meet your future fur-riend for life!</p>
-            <p><a class="btn btn-primary btn-lg" href="<?= ROOT_PATH ?>/resources/list" role="button">Adopt Now &raquo;</a></p>
+            <p><a class="btn btn-primary btn-lg" href="<?= ROOT_PATH ?>/animals/list" role="button">Adopt Now &raquo;</a></p>
         </div>
 
         <div class="col-md-4 d-flex p-2">
@@ -20,7 +20,7 @@
                     <strong class="d-inline-block mb-2 text-primary">Animals</strong>
                     <h3 class="mb-0">Looking to adopt?</h3>
                     <p class="card-text mb-auto">Find your new furry friend at our animal shelter! Click here to view our adoptable dogs, cats, and other pets waiting for their forever homes.</p>
-                    <a href="<?= ROOT_PATH ?>/resources" class="card-link ms-auto">See More &raquo;</a>
+                    <a href="<?= ROOT_PATH ?>/animals" class="card-link ms-auto">See More &raquo;</a>
                 </div>
                 <div class="col-auto d-none d-lg-block">
                     <img src="assets\thomas-park-On6bRQRn5lY-unsplash.jpg" width="350" height="250" alt="">

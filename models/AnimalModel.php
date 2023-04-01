@@ -1,6 +1,6 @@
 <?php
 
-    class ResourceModel {
+    class AnimalModel {
 
         private static $_table = "animals";
 
