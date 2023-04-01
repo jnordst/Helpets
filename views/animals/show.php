@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Animals</h1>
+    <h1>Available Animals</h1>
 </div>
 
 <div class="container">
@@ -15,14 +15,14 @@
             </thead>
 
             <tbody>
-                <?php foreach ($breeds as $breed): ?>
+                <?php foreach ($animals as $animal): ?>
                     <tr>
-                        <td><?=$breed->animal_name?></td>
-                        <td><?=$breed->breed_name?></td>
-                        <td><?=$breed->animal_age?></td>
+                        <td><?=$animal->animal_name?></td>
+                        <td><?=$animal->breed_name?></td>
+                        <td><?=$animal->animal_age?></td>
                         <td>
-                            <a class="btn btn-success" href="<?= ROOT_PATH ?>/resources/delete/" onclick="return confirm('Are you sure you want to adopt this animal?')">Adopt</a>
-                            <a class="btn btn-outline-secondary" href="<?= ROOT_PATH ?>/resources/edit/">Edit</a>
+                            <a class="btn btn-success" href="<?= ROOT_PATH ?>/animals/delete/<?= $animal->animal_id ?>" onclick="return confirm('Are you sure you want to adopt this animal?')">Adopt</a>
+                            <a class="btn btn-outline-secondary" href="<?= ROOT_PATH ?>/animals/edit/<?= $animal->animal_id ?>">Edit</a>
                         </td>
                     </tr>
                 <?php endforeach ?>

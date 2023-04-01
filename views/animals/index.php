@@ -4,8 +4,8 @@
             <h1 class="display-3">Animals</h1>
             <p class="lead font-weight-normal">We take care of all sorts of furry friends. Are you looking to adopt or drop off?</p>
             <div class="d-flex flex-row">
-                <p><a class="btn btn-primary btn-lg mt-5 me-2" href="<?= ROOT_PATH ?>/resources/show" role="button">Adopt</a></p>
-                <p><a class="btn btn-outline-secondary btn-lg mt-5" href="<?= ROOT_PATH ?>/resources/new" role="button">Drop Off</a></p>
+                <p><a class="btn btn-primary btn-lg mt-5 me-2" href="<?= ROOT_PATH ?>/animals/show" role="button">Adopt</a></p>
+                <p><a class="btn btn-outline-secondary btn-lg mt-5" href="<?= ROOT_PATH ?>/animals/new" role="button">Drop Off</a></p>
             </div>
         </div>
 

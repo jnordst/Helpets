@@ -69,8 +69,8 @@ $auth = isset($_SESSION["user"]);
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/new">New</a></li>
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/show">List</a></li>
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/animals/new">Drop Off</a></li>
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/animals/show">Adopt</a></li>
                             </ul>
                         </li>
 
@@ -79,7 +79,7 @@ $auth = isset($_SESSION["user"]);
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= ROOT_PATH ?>">Contact</a>
+                            <a class="nav-link" href="<?= ROOT_PATH ?>/contact">Contact</a>
                         </li>
 
                         <li class="nav-item">

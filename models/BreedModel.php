@@ -8,9 +8,7 @@
         {
             $table = self::$_table;
             $conn = get_connection();
-            $sql = "SELECT *
-            FROM {$table}
-            JOIN animals ON breeds.breed_id = animals.breed_id";
+            $sql = "SELECT * FROM {$table}";
 
             $breeds = $conn->query($sql)->fetchAll(PDO::FETCH_OBJ);
             $conn = null;
