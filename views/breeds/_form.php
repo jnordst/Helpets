@@ -1,7 +1,7 @@
 <?php
   
     $form_fields = $form_fields ?? [];
-    if (count($form_fields) === 0 && isset($animal)) $form_fields = (array) $animal;
+    if (count($form_fields) === 0 && isset($breed)) $form_fields = (array) $breed;
 ?>
 
 <form action="<?= ROOT_PATH ?>/breeds/<?= $action ?>" method="post">
