@@ -74,7 +74,7 @@ function delete ($request) {
 }
 
 function validate ($package, $error_redirect_path) {
-    $fields = ["name"];
+    $fields = ["breed_name"];
     $errors = [];
 
     // No empty fields
