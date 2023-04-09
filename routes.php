@@ -26,7 +26,6 @@
                 "controller" => "PagesController",
                 "action" => "contact"
             ],
-
             
             [
                 "pattern" => "/resources",
@@ -51,6 +50,26 @@
             [
                 "pattern" => "/resources/delete/:animal_id",
                 "controller" => "ResourcesController",
+                "action" => "delete"
+            ],
+            [
+                "pattern" => "/breeds",
+                "controller" => "BreedsController",
+                "action" => "index"
+            ],
+            [
+                "pattern" => "/breeds/new",
+                "controller" => "BreedsController",
+                "action" => "_new"
+            ],
+            [
+                "pattern" => "/breeds/edit/:animal_id",
+                "controller" => "BreedsController",
+                "action" => "edit"
+            ],
+            [
+                "pattern" => "/breeds/delete/:animal_id",
+                "controller" => "BreedsController",
                 "action" => "delete"
             ],
             [
@@ -79,6 +98,16 @@
             [
                 "pattern" => "/resources/update",
                 "controller" => "ResourcesController",
+                "action" => "update"
+            ],
+            [
+                "pattern" => "/breeds/create",
+                "controller" => "BreedsController",
+                "action" => "create"
+            ],
+            [
+                "pattern" => "/breeds/update",
+                "controller" => "BreedsController",
                 "action" => "update"
             ],
             [
