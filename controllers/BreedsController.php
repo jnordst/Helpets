@@ -51,7 +51,7 @@ function create () {
     validate($_POST, "breed/new");
     
     // Write to database if good
-    BreedModel::create($_POST);
+    BreedModel::create(sanitize($_POST));
 
     redirect("breeds", ["success" => "Breed was created successfully"]);
 }
@@ -87,7 +87,7 @@ function delete ($request) {
 
 function validate ($package, $error_redirect_path) {
     if (!is_authorized()) return;
-    
+
     $fields = ["breed_name"];
     $errors = [];
 
@@ -102,6 +102,20 @@ function validate ($package, $error_redirect_path) {
     if (count($errors)) {
         return redirect($error_redirect_path, ["form_fields" => $package, "errors" => $errors]);
     }
+}
+
+function sanitize($package) {
+    $name = $package["breed_name"];
+  
+    // Trim any leading or trailing spaces from the name
+    $name = trim($name);
+  
+    // Capitalize the first letter of each word in the name
+    $name = ucwords(strtolower($name));
+
+    $package["breed_name"] = $name;
+
+    return $package;
 }
 
 function is_authorized()

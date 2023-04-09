@@ -34,7 +34,7 @@
                     <strong class="d-inline-block mb-2 text-primary">Contact</strong>
                     <h3 class="mb-0">Make an appointment</h3>
                     <p class="mb-auto">Please don't hesitate to get in touch with us. We are always happy to answer any questions you may have and help you find your new best fur-riend.</p>
-                    <a href="#" class="card-link ms-auto">Go &raquo;</a>
+                    <a href="<?= ROOT_PATH ?>/contact" class="card-link ms-auto">Go &raquo;</a>
                 </div>
             </div>
         </div>

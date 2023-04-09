@@ -67,7 +67,7 @@
         validate($_POST, "animals/new");
 
         // Write to database if good
-        AnimalModel::create($_POST);
+        AnimalModel::create(sanitize($_POST));
      
         redirect("animals/show", ["success" => "Animal was added successfully"]);
     }
@@ -121,7 +121,19 @@
         }
     }
 
-    function sanitize($package) {}
+    function sanitize($package) {
+        $name = $package["animal_name"];
+      
+        // Trim any leading or trailing spaces from the name
+        $name = trim($name);
+      
+        // Capitalize the first letter of each word in the name
+        $name = ucwords(strtolower($name));
+
+        $package["animal_name"] = $name;
+
+        return $package;
+    }
 
     function is_authorized()
     {
