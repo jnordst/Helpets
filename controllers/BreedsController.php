@@ -20,12 +20,12 @@ function _new () {
 }
 
 function edit ($request) {
-    if (!isset($request["params"]["animal_id"])) {
+    if (!isset($request["params"]["breed_id"])) {
         return redirect("", ["errors" => "Missing required ID parameter"]);
     }
 
     if (session_status() === PHP_SESSION_NONE) session_start();
-    $breed = BreedModel::find($request["params"]["animal_id"]);
+    $breed = BreedModel::find($request["params"]["breed_id"]);
     if (!$breed) {
         return redirect("", ["errors" => "Breed does not exist"]);
     }
@@ -50,12 +50,12 @@ function create () {
 
 function update () {
     // Missing ID
-    if (!isset($_POST['animal_id'])) {
+    if (!isset($_POST['breed_id'])) {
         return redirect("breeds", ["errors" => "Missing required ID parameter"]);
     }
 
     // Validate field requirements
-    validate($_POST, "breeds/edit/{$_POST['animal_id']}");
+    validate($_POST, "breeds/edit/{$_POST['breed_id']}");
 
     // Write to database if good
     BreedModel::update($_POST);
@@ -64,11 +64,11 @@ function update () {
 
 function delete ($request) {
     // Missing ID
-    if (!isset($request["params"]["animal_id"])) {
+    if (!isset($request["params"]["breed_id"])) {
         return redirect("breeds", ["errors" => "Missing required ID parameter"]);
     }
 
-    BreedModel::delete($request["params"]["animal_id"]);
+    BreedModel::delete($request["params"]["breed_id"]);
 
     redirect("breeds", ["success" => "Breed was deleted successfully"]);
 }

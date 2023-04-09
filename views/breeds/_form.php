@@ -10,8 +10,8 @@
     <?php endif ?>
 
     <div class="form-group my-3">
-        <label for="breed">Breed</label>
-        <input class="form-control" type="text" name="breed" value="<?= $form_fields["breed"] ?? "" ?>">
+        <label for="breed_name">Breed</label>
+        <input class="form-control" type="text" name="breed_name" value="<?= $form_fields["breed_name"] ?? "" ?>">
     </div>
 
     <div>
