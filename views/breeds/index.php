@@ -15,10 +15,10 @@
         <tbody>
             <?php foreach ($breeds as $breed): ?>
                 <tr>
-                    <td><?= $status->name ?></td>
+                    <td><?= $breed->name ?></td>
                     <td>
-                        <a class="btn btn-warning" href="<?= ROOT_PATH ?>/breeds/edit/<?= $status->id ?>">edit</a>
-                        <a class="btn btn-danger" href="<?= ROOT_PATH ?>/breeds/delete/<?= $status->id ?>" onclick="return confirm('Are you sure you want to delete this breed?')">delete</a>
+                        <a class="btn btn-warning" href="<?= ROOT_PATH ?>/breeds/edit/<?= $breed->id ?>">edit</a>
+                        <a class="btn btn-danger" href="<?= ROOT_PATH ?>/breeds/delete/<?= $breed->id ?>" onclick="return confirm('Are you sure you want to delete this breed?')">delete</a>
                     </td>
                 </tr>
             <?php endforeach ?>
