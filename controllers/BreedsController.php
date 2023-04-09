@@ -3,6 +3,8 @@
 require_once("./models/BreedModel.php");
 
 function index () {
+    if (!is_authorized()) return;
+
     if (session_status() === PHP_SESSION_NONE) session_start();
     $breeds = BreedModel::findAll();
 
@@ -13,6 +15,8 @@ function index () {
 }
 
 function _new () {
+    if (!is_authorized()) return;
+
     render("breeds/new", [
         "title" => "New Breed",
         "action" => "create"
@@ -20,6 +24,8 @@ function _new () {
 }
 
 function edit ($request) {
+    if (!is_authorized()) return;
+
     if (!isset($request["params"]["breed_id"])) {
         return redirect("", ["errors" => "Missing required ID parameter"]);
     }
@@ -39,6 +45,8 @@ function edit ($request) {
 }
 
 function create () {
+    if (!is_authorized()) return;
+
     // Validate field requirements
     validate($_POST, "breed/new");
     
@@ -49,6 +57,8 @@ function create () {
 }
 
 function update () {
+    if (!is_authorized()) return;
+
     // Missing ID
     if (!isset($_POST['breed_id'])) {
         return redirect("breeds", ["errors" => "Missing required ID parameter"]);
@@ -63,6 +73,8 @@ function update () {
 }
 
 function delete ($request) {
+    if (!is_authorized()) return;
+
     // Missing ID
     if (!isset($request["params"]["breed_id"])) {
         return redirect("breeds", ["errors" => "Missing required ID parameter"]);
@@ -74,6 +86,8 @@ function delete ($request) {
 }
 
 function validate ($package, $error_redirect_path) {
+    if (!is_authorized()) return;
+    
     $fields = ["breed_name"];
     $errors = [];
 
@@ -88,6 +102,19 @@ function validate ($package, $error_redirect_path) {
     if (count($errors)) {
         return redirect($error_redirect_path, ["form_fields" => $package, "errors" => $errors]);
     }
+}
+
+function is_authorized()
+{
+    if (session_status() === PHP_SESSION_NONE) session_start();
+
+
+    if (!isset($_SESSION["user"]))
+    {
+        return redirect("login", ["errors" => "You must be logged in to view this page"]);
+    }
+
+    return true;
 }
 
 ?>

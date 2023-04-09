@@ -56,17 +56,6 @@ $auth = isset($_SESSION["user"]);
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <?php if ($auth) : ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Breeds
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/breeds/new">New</a></li>
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/breeds">List</a></li>
-                            </ul>
-                        </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="<?= ROOT_PATH ?>">Home</a>
                         </li>
@@ -79,6 +68,17 @@ $auth = isset($_SESSION["user"]);
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/animals/new">Drop Off</a></li>
                                 <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/animals/show">Adopt</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Breeds
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/breeds/new">New</a></li>
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/breeds">List</a></li>
                             </ul>
                         </li>
 

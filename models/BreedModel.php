@@ -54,15 +54,18 @@
         }
 
         public static function update($package) {
+            var_dump($package);
+
             $table = self::$_table;
             $conn = get_connection();
             $sql = "UPDATE {$table} SET
-                breed_name = :breed_name,
+                breed_name = :breed_name
             WHERE breed_id = :breed_id";
 
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":breed_name", $package['breed_name'], PDO::PARAM_STR);
             $stmt->bindParam(":breed_id", $package['breed_id'], PDO::PARAM_INT);
+            $stmt->bindParam(":breed_name", $package['breed_name'], PDO::PARAM_STR);
+
             
             $stmt->execute();
             $conn = null;
