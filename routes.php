@@ -61,12 +61,12 @@
                 "action" => "_new"
             ],
             [
-                "pattern" => "/breeds/edit/:animal_id",
+                "pattern" => "/breeds/edit/:breed_id",
                 "controller" => "BreedsController",
                 "action" => "edit"
             ],
             [
-                "pattern" => "/breeds/delete/:animal_id",
+                "pattern" => "/breeds/delete/:breed_id",
                 "controller" => "BreedsController",
                 "action" => "delete"
             ],
