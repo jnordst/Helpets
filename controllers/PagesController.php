@@ -11,17 +11,5 @@
             "title" => "About"
         ]);
     }
-
-    function contact () {
-        render("pages/contact",[
-            "title" => "About"
-        
-        ]);
-
-    }
-
-
-
-
-
+    
 ?>

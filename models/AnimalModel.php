@@ -1,6 +1,6 @@
 <?php
 
-    class ResourceModel {
+    class AnimalModel {
 
         private static $_table = "animals";
 
@@ -33,8 +33,6 @@
             $animals = $stmt->fetch(PDO::FETCH_OBJ);
             $conn = null;
             return $animals;
-
-
         }
 
         public static function create($package) {

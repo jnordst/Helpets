@@ -69,3 +69,15 @@ VALUES
 SELECT animal_name 'Name', breed_name 'Breed', animal_age 'Age'
 FROM animals
 NATURAL JOIN breeds;
+
+CREATE TABLE emails (
+	email_id
+		INT
+        AUTO_INCREMENT
+        PRIMARY KEY,
+	user_id
+		INT,
+        FOREIGN KEY (user_id) REFERENCES users(id),
+	message
+		VARCHAR(300)
+);

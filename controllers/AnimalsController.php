@@ -1,94 +1,110 @@
 <?php
 
-    require_once("./models/ResourceModel.php");
+    require_once("./models/AnimalModel.php");
     require_once("./models/BreedModel.php");
 
     function index () {
-        $animals = ResourceModel::findAll();
+        if (!is_authorized()) return;
+        $animals = AnimalModel::findAll();
 
-        render("resources/index", [
+        render("animals/index", [
             "animals" => $animals,
             "title" => "Animals"
         ]);
     }
 
     function show () {
-        $animals = ResourceModel::findAll();
+        if (!is_authorized()) return;
+
+        $animals = AnimalModel::findAll();
         
-        render("resources/show", [
+        render("animals/show", [
             "animals" => $animals,
             "title" => "Show"
         ]);
     }
 
     function _new () {
+        if (!is_authorized()) return;
+
         $breeds = BreedModel::findAll();
 
-        render("resources/new", [
+        render("animals/new", [
             "title" => "New",
             "action" => "create",
             "breeds" => ($breeds ?? [])
-
         ]);
     }
 
     function edit ($request) {
+        if (!is_authorized()) return;
+
         if (!isset($request["params"]["animal_id"])) {
             return redirect("", ["errors" => "Missing required ID parameter"]);
         }
         
-        $animal = ResourceModel::find($request["params"]["animal_id"]);
+        $animal = AnimalModel::find($request["params"]["animal_id"]);
         if (!$animal) {
             return redirect("", ["errors" => "Animal does not exist"]);
         }
 
-        render("resources/edit", [
+        $breeds = BreedModel::findAll();
+
+
+        render("animals/edit", [
             "title" => "Edit Animal",
             "animal" => $animal,
+            "breeds" => ($breeds ?? []),
             "edit_mode" => true,
             "action" => "update"
         ]);
     }
 
     function create () {
-             // Validate field requirements
-             validate($_POST, "resources/new");
+        if (!is_authorized()) return;
 
-             // Write to database if good
-             ResourceModel::create($_POST);
+        // Validate field requirements
+        validate($_POST, "animals/new");
+
+        // Write to database if good
+        AnimalModel::create($_POST);
      
-             redirect("resources", ["success" => "Animal was added successfully"]);
-         }
+        redirect("animals/show", ["success" => "Animal was added successfully"]);
+    }
 
     
 
     function update () {
+        if (!is_authorized()) return;
 
         if (!isset($_POST['animal_id'])) {
             return redirect("animals", ["errors" => "Missing required ID parameter"]);
         }
 
         // Validate field requirements
-        validate($_POST, "resources/edit/{$_POST['animal_id']}");
+        validate($_POST, "animals/edit/{$_POST['animal_id']}");
 
         // Write to database if good
-        ResourceModel::update($_POST);
-        redirect("", ["success" => "animal was updated successfully"]);
+        AnimalModel::update($_POST);
+        redirect("", ["success" => "Animal was updated successfully"]);
     }
     
 
     function delete ($request) {
+        if (!is_authorized()) return;
 
         if (!isset($request["params"]["animal_id"])) {
             return redirect("animals", ["errors" => "Missing required ID parameter"]);
         }
 
-        ResourceModel::delete($request["params"]["animal_id"]);
+        AnimalModel::delete($request["params"]["animal_id"]);
 
         redirect("", ["success" => "Animal was adopted successfully!"]);
     }
 
     function validate ($package, $error_redirect_path) {
+        if (!is_authorized()) return;
+
         $fields = ["animal_name", "animal_age", "breed_id"];
         $errors = [];
 
@@ -103,9 +119,19 @@
         if (count($errors)) {
             return redirect($error_redirect_path, ["form_fields" => $package, "errors" => $errors]);
         }
-
     }
 
     function sanitize($package) {}
 
-?>
+    function is_authorized()
+    {
+        if (session_status() === PHP_SESSION_NONE) session_start();
+
+
+        if (!isset($_SESSION["user"]))
+        {
+            return redirect("login", ["errors" => "You must be logged in to view this page"]);
+        }
+
+        return true;
+    }

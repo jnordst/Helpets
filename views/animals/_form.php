@@ -4,7 +4,7 @@
     if (count($form_fields) === 0 && isset($animal)) $form_fields = (array) $animal;
 ?>
 
-<form action="<?= ROOT_PATH ?>/resources/<?= $action ?>" method="post">
+<form action="<?= ROOT_PATH ?>/animals/<?= $action ?>" method="post">
 <?php if ($action === "update"): ?>
         <input type="hidden" name="animal_id" value="<?= $form_fields["animal_id"] ?>">
     <?php endif ?>

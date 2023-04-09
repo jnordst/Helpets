@@ -44,6 +44,26 @@
             $conn = null;
         }
 
+        public static function send_email($package) {
+            var_dump($package);
+            $conn = get_connection();
+
+            $sql = "INSERT INTO emails (
+                user_id,
+                message
+            ) VALUES (
+                :user_id,
+                :message
+            )";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":user_id", $package["user_id"], PDO::PARAM_INT);
+            $stmt->bindParam(":message", $package["message"], PDO::PARAM_STR);
+            $stmt->execute();
+
+            $conn = null;
+        }
+
     }
 
 ?>

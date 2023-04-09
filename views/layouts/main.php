@@ -47,10 +47,7 @@ $auth = isset($_SESSION["user"]);
     <!-- Global navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?= ROOT_PATH ?>">
-                <img src="assets\paw-filled.png" alt="" width="30" class="d-inline-block align-text-top">
-                helpets
-            </a>
+            <a class="navbar-brand" href="<?= ROOT_PATH ?>"><img src="<?= ROOT_PATH ?>/assets/paw-filled.png" alt="" width="30" class="d-inline-block align-text-top">helpets</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -69,8 +66,8 @@ $auth = isset($_SESSION["user"]);
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/new">New</a></li>
-                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/resources/show">List</a></li>
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/animals/new">Drop Off</a></li>
+                                <li><a class="dropdown-item" href="<?= ROOT_PATH ?>/animals/show">Adopt</a></li>
                             </ul>
                         </li>
 

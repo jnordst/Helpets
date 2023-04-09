@@ -15,41 +15,39 @@
                 "action" => "index"
             ],
             [
-                // Route for the about page
                 "pattern" => "/about",
                 "controller" => "PagesController",
                 "action" => "about"
             ],
             [
-                // Route for the about page
                 "pattern" => "/contact",
-                "controller" => "PagesController",
+                "controller" => "UsersController",
                 "action" => "contact"
             ],
             
             [
-                "pattern" => "/resources",
-                "controller" => "ResourcesController",
+                "pattern" => "/animals",
+                "controller" => "AnimalsController",
                 "action" => "index"
             ],
             [
-                "pattern" => "/resources/new",
-                "controller" => "ResourcesController",
+                "pattern" => "/animals/new",
+                "controller" => "AnimalsController",
                 "action" => "_new"
             ],
             [
-                "pattern" => "/resources/:animal_id",
-                "controller" => "ResourcesController",
+                "pattern" => "/animals/:animal_id",
+                "controller" => "AnimalsController",
                 "action" => "show"
             ],
             [
-                "pattern" => "/resources/edit/:animal_id",
-                "controller" => "ResourcesController",
+                "pattern" => "/animals/edit/:animal_id",
+                "controller" => "AnimalsController",
                 "action" => "edit"
             ],
             [
-                "pattern" => "/resources/delete/:animal_id",
-                "controller" => "ResourcesController",
+                "pattern" => "/animals/delete/:animal_id",
+                "controller" => "AnimalsController",
                 "action" => "delete"
             ],
             [
@@ -91,13 +89,13 @@
         ],
         "post" => [
             [
-                "pattern" => "/resources/create",
-                "controller" => "ResourcesController",
+                "pattern" => "/animals/create",
+                "controller" => "AnimalsController",
                 "action" => "create"
             ],
             [
-                "pattern" => "/resources/update",
-                "controller" => "ResourcesController",
+                "pattern" => "/animals/update",
+                "controller" => "AnimalsController",
                 "action" => "update"
             ],
             [
@@ -119,6 +117,11 @@
                 "pattern" => "/authenticate",
                 "controller" => "UsersController",
                 "action" => "authenticate"
+            ],
+            [
+                "pattern" => "/send_email",
+                "controller" => "UsersController",
+                "action" => "send_email"
             ],
         ]
     ];
