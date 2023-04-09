@@ -15,15 +15,13 @@
                 "action" => "index"
             ],
             [
-                // Route for the about page
                 "pattern" => "/about",
                 "controller" => "PagesController",
                 "action" => "about"
             ],
             [
-                // Route for the about page
                 "pattern" => "/contact",
-                "controller" => "PagesController",
+                "controller" => "UsersController",
                 "action" => "contact"
             ],
 
@@ -90,6 +88,11 @@
                 "pattern" => "/authenticate",
                 "controller" => "UsersController",
                 "action" => "authenticate"
+            ],
+            [
+                "pattern" => "/send_email",
+                "controller" => "UsersController",
+                "action" => "send_email"
             ],
         ]
     ];
