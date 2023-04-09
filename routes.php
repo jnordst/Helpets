@@ -15,18 +15,15 @@
                 "action" => "index"
             ],
             [
-                // Route for the about page
                 "pattern" => "/about",
                 "controller" => "PagesController",
                 "action" => "about"
             ],
             [
-                // Route for the about page
                 "pattern" => "/contact",
-                "controller" => "PagesController",
+                "controller" => "UsersController",
                 "action" => "contact"
             ],
-
             
             [
                 "pattern" => "/animals",
@@ -51,6 +48,26 @@
             [
                 "pattern" => "/animals/delete/:animal_id",
                 "controller" => "AnimalsController",
+                "action" => "delete"
+            ],
+            [
+                "pattern" => "/breeds",
+                "controller" => "BreedsController",
+                "action" => "index"
+            ],
+            [
+                "pattern" => "/breeds/new",
+                "controller" => "BreedsController",
+                "action" => "_new"
+            ],
+            [
+                "pattern" => "/breeds/edit/:breed_id",
+                "controller" => "BreedsController",
+                "action" => "edit"
+            ],
+            [
+                "pattern" => "/breeds/delete/:breed_id",
+                "controller" => "BreedsController",
                 "action" => "delete"
             ],
             [
@@ -82,6 +99,16 @@
                 "action" => "update"
             ],
             [
+                "pattern" => "/breeds/create",
+                "controller" => "BreedsController",
+                "action" => "create"
+            ],
+            [
+                "pattern" => "/breeds/update",
+                "controller" => "BreedsController",
+                "action" => "update"
+            ],
+            [
                 "pattern" => "/users/create",
                 "controller" => "UsersController",
                 "action" => "create"
@@ -90,6 +117,11 @@
                 "pattern" => "/authenticate",
                 "controller" => "UsersController",
                 "action" => "authenticate"
+            ],
+            [
+                "pattern" => "/send_email",
+                "controller" => "UsersController",
+                "action" => "send_email"
             ],
         ]
     ];

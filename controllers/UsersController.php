@@ -52,6 +52,8 @@
     }
 
     function validate ($package, $error_redirect_path) {
+        if (!is_authorized()) return;
+
         $fields = ["name", "email", "email_confirmation", "password", "password_confirmation"];
         $errors = [];
 
@@ -90,6 +92,8 @@
     }
 
     function sanitize ($package) {
+        if (!is_authorized()) return;
+
         // Sanitize the data
         // Sanitize the email
         $package["email"] = filter_var($package["email"], FILTER_SANITIZE_EMAIL);
@@ -101,6 +105,40 @@
         $package["password"] = password_hash($package["password"], PASSWORD_DEFAULT);
 
         return $package;
+    }
+
+    function contact () {
+        if (!is_authorized()) return;
+        
+        render("pages/contact",[
+            "title" => "Contact"
+        ]);
+    }
+
+    function send_email() {
+        if (!is_authorized()) return;
+
+        if (strlen($_POST['param_name']) > 300 || strlen($_POST['param_name']) < 50)
+        {
+            return redirect("contact", ["errors" => "Message cannot be longer than 300 characters or shorter than 50 characters"]);
+        }
+
+        UserModel::send_email($_POST);
+
+        redirect("", ["success" => "Email sent successfully"]);
+    }
+
+    function is_authorized()
+    {
+        if (session_status() === PHP_SESSION_NONE) session_start();
+
+
+        if (!isset($_SESSION["user"]))
+        {
+            return redirect("login", ["errors" => "You must be logged in to view this page"]);
+        }
+
+        return true;
     }
 
 ?>

@@ -17,27 +17,73 @@
 
         public static function find($id) 
         {
-            $table = self::$_table;
-            $conn = get_connection();
-            $sql = "SELECT *
-            FROM {$table}
-            JOIN animals ON breeds.breed_id = animals.breed_id
-            WHERE breeds.breed_id = :id";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            $breed = $stmt->fetch(PDO::FETCH_OBJ);
-            $conn = null;
-            return $breed;
+                $table = self::$_table;
+                $conn = get_connection();
+                $sql = "SELECT *
+                FROM {$table}
+                WHERE breed_id = :id";
+    
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                $stmt->execute();
+    
+                $breed = $stmt->fetch(PDO::FETCH_OBJ);
+                $conn = null;
+                return $breed;
+            
         }
 
-        public static function create($package) {}
+        public static function create($package) {
+            $table = self::$_table;
+            $conn = get_connection();
+            $sql = "INSERT INTO {$table} (
+                breed_name,
+                breed_id
+            ) VALUES (
+                :breed_name,
+                :breed_id
+            )";
 
-        public static function update($package) {}
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":breed_name", $package["breed_name"], PDO::PARAM_STR);
+            $stmt->bindParam(":breed_id", $package['breed_id'], PDO::PARAM_INT);
 
-        public static function delete($id) {}
+            $stmt->execute();
+            $conn = null;
+
+        }
+
+        public static function update($package) {
+            var_dump($package);
+
+            $table = self::$_table;
+            $conn = get_connection();
+            $sql = "UPDATE {$table} SET
+                breed_name = :breed_name
+            WHERE breed_id = :breed_id";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":breed_id", $package['breed_id'], PDO::PARAM_INT);
+            $stmt->bindParam(":breed_name", $package['breed_name'], PDO::PARAM_STR);
+
+            
+            $stmt->execute();
+            $conn = null;
+
+        }
+
+        public static function delete($id) {
+
+            $table = self::$_table;
+            $conn = get_connection();
+            $sql = "DELETE FROM {$table} WHERE breed_id = :breed_id";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(":breed_id", $id, PDO::PARAM_INT);
+
+            $stmt->execute();
+            $conn = null;
+        }
 
     }
 

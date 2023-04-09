@@ -4,6 +4,7 @@
     require_once("./models/BreedModel.php");
 
     function index () {
+        if (!is_authorized()) return;
         $animals = AnimalModel::findAll();
 
         render("animals/index", [
@@ -13,6 +14,8 @@
     }
 
     function show () {
+        if (!is_authorized()) return;
+
         $animals = AnimalModel::findAll();
         
         render("animals/show", [
@@ -22,6 +25,8 @@
     }
 
     function _new () {
+        if (!is_authorized()) return;
+
         $breeds = BreedModel::findAll();
 
         render("animals/new", [
@@ -32,6 +37,8 @@
     }
 
     function edit ($request) {
+        if (!is_authorized()) return;
+
         if (!isset($request["params"]["animal_id"])) {
             return redirect("", ["errors" => "Missing required ID parameter"]);
         }
@@ -54,18 +61,21 @@
     }
 
     function create () {
-             // Validate field requirements
-             validate($_POST, "animals/new");
+        if (!is_authorized()) return;
 
-             // Write to database if good
-             AnimalModel::create($_POST);
+        // Validate field requirements
+        validate($_POST, "animals/new");
+
+        // Write to database if good
+        AnimalModel::create(sanitize($_POST));
      
-             redirect("animals/show", ["success" => "Animal was added successfully"]);
-         }
+        redirect("animals/show", ["success" => "Animal was added successfully"]);
+    }
 
     
 
     function update () {
+        if (!is_authorized()) return;
 
         if (!isset($_POST['animal_id'])) {
             return redirect("animals", ["errors" => "Missing required ID parameter"]);
@@ -81,6 +91,7 @@
     
 
     function delete ($request) {
+        if (!is_authorized()) return;
 
         if (!isset($request["params"]["animal_id"])) {
             return redirect("animals", ["errors" => "Missing required ID parameter"]);
@@ -92,6 +103,8 @@
     }
 
     function validate ($package, $error_redirect_path) {
+        if (!is_authorized()) return;
+
         $fields = ["animal_name", "animal_age", "breed_id"];
         $errors = [];
 
@@ -106,9 +119,31 @@
         if (count($errors)) {
             return redirect($error_redirect_path, ["form_fields" => $package, "errors" => $errors]);
         }
-
     }
 
-    function sanitize($package) {}
+    function sanitize($package) {
+        $name = $package["animal_name"];
+      
+        // Trim any leading or trailing spaces from the name
+        $name = trim($name);
+      
+        // Capitalize the first letter of each word in the name
+        $name = ucwords(strtolower($name));
 
-?>
+        $package["animal_name"] = $name;
+
+        return $package;
+    }
+
+    function is_authorized()
+    {
+        if (session_status() === PHP_SESSION_NONE) session_start();
+
+
+        if (!isset($_SESSION["user"]))
+        {
+            return redirect("login", ["errors" => "You must be logged in to view this page"]);
+        }
+
+        return true;
+    }
