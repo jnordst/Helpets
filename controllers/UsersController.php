@@ -107,20 +107,25 @@
         return $package;
     }
 
-    function send_email() {
-        if (!is_authorized()) return;
-
-        UserModel::send_email($_POST);
-
-        redirect("", ["success" => "Email sent successfully"]);
-    }
-
     function contact () {
         if (!is_authorized()) return;
         
         render("pages/contact",[
             "title" => "Contact"
         ]);
+    }
+
+    function send_email() {
+        if (!is_authorized()) return;
+
+        if (strlen($_POST['param_name']) > 300 || strlen($_POST['param_name']) < 50)
+        {
+            return redirect("contact", ["errors" => "Message cannot be longer than 300 characters or shorter than 50 characters"]);
+        }
+
+        UserModel::send_email($_POST);
+
+        redirect("", ["success" => "Email sent successfully"]);
     }
 
     function is_authorized()
